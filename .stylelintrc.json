@@ -4,8 +4,6 @@
     "selector-class-pattern": null,
     "custom-property-pattern": null,
     "keyframes-name-pattern": null
-  }
-
-,
-  "ignoreFiles": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
+  },
+  "ignoreFiles": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "node_modules/**", "dist/**"]
 }

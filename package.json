@@ -19,9 +19,12 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{css,json}": [
+    "*.css": [
       "prettier --write",
       "stylelint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
     ]
   },
   "dependencies": {
