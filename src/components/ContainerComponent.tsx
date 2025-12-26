@@ -107,7 +107,7 @@ const ContainerComponent: React.FC<ContainerComponentProps> = ({
           component={component}
           onDelete={onDelete}
           position={toolbarPosition}
-          onUpdate={onUpdate}
+          onUpdate={comp => onUpdate(comp as ContainerComponentType)}
           onCreateChildren={handleCreateChildren}
         />
       )}

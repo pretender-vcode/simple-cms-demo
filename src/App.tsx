@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import update from 'immutability-helper';
@@ -10,6 +10,21 @@ import './App.css';
 function App() {
   const [components, setComponents] = useState<ComponentData[]>([]);
   const [selectedComponentId, setSelectedComponentId] = useState<string | null>(null);
+
+  // 递归计算所有组件数量（包括嵌套的子组件）
+  const totalComponentCount = useMemo(() => {
+    const countComponents = (comps: ComponentData[]): number => {
+      let count = 0;
+      for (const comp of comps) {
+        count += 1; // 当前组件本身
+        if (comp.type === ComponentType.CONTAINER && comp.children) {
+          count += countComponents(comp.children); // 递归计算子组件
+        }
+      }
+      return count;
+    };
+    return countComponents(components);
+  }, [components]);
 
   // 点击画布外部时取消选中
   useEffect(() => {
@@ -299,7 +314,7 @@ function App() {
             >
               <h2>画布区域</h2>
               <div style={{ color: '#666', fontSize: '14px' }}>
-                {components.length > 0 && `当前组件数: ${components.length}`}
+                {totalComponentCount > 0 && `当前组件数: ${totalComponentCount}`}
               </div>
             </div>
             <DropCanvas
