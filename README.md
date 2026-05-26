@@ -1,6 +1,6 @@
-# React DnD Demo
+# Simple CMS Demo
 
-一个基于 React + TypeScript + react-dnd 的拖拽组件画布应用。
+一个基于 React + TypeScript + react-dnd 的拖拽组件CMS画布应用。
 
 ## 功能特性
 
